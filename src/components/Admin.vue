@@ -1,12 +1,13 @@
 <template>
   <div class="homepage">
     <h1>Add Item</h1>
+    <p>See the <a href="#" v-on:click="handleStoreClick">Store</a></p>
     <!-- TODO: Add Form -->
   </div>
 </template>
 
 <script>
-// import apiService from '../api-service';
+import apiService from '../api-service';
 
 export default {
   name: 'Admin',
@@ -16,7 +17,10 @@ export default {
     };
   },
   methods: {
-
+    handleStoreClick: function(evt) {
+      evt.preventDefault();
+      this.$router.push('/');
+    }
   },
   // SPAのSEO対策?
   // mounted: function () {
