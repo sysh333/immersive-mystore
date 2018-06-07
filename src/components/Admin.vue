@@ -6,10 +6,10 @@
 </template>
 
 <script>
-import apiService from '../api-service';
+// import apiService from '../api-service';
 
 export default {
-  name: 'Account',
+  name: 'Admin',
   data() {
     return {
 
@@ -18,6 +18,11 @@ export default {
   methods: {
 
   },
+  // SPAのSEO対策?
+  // mounted: function () {
+  //   const title = window.document.getElementsByTagName('title')[0];
+  //   title.textContent = 'mystore: admin';
+  // },
 };
 </script>
 
