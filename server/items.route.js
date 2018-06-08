@@ -26,9 +26,23 @@ router.get('/', async (req, res, next) => {
 });
 
 router.post('/', async (req, res, next) => {
+  let connection;
   const { name, price, imageUrl } = req.body;
 
-  res.json({name, price, imageUrl, received: true});
+  try {
+    connection = await db.getConnection();
+
+    const queryInsert = 'INSERT INTO items (name, price, image_url) VALUES (?, ?, ?)';
+    const [result] = await connection.query(queryInsert, [name, price, imageUrl]);
+
+    res.json(result.insertId);
+  } catch (err) {
+    next(err);
+  } finally {
+    if (connection) {
+      connection.close();
+    }
+  }
 });
 
 module.exports = router;
