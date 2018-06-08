@@ -25,4 +25,10 @@ router.get('/', async (req, res, next) => {
   }
 });
 
+router.post('/', async (req, res, next) => {
+  const { name, price, imageUrl } = req.body;
+
+  res.json({name, price, imageUrl, received: true});
+});
+
 module.exports = router;

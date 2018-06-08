@@ -10,7 +10,7 @@
         </div>
       </div>
     </div>
-    <p>Go to the <a href="#" v-on:click="handleAdminClick">Admin Panel</a></p>
+    <p>Go to the <router-link to="/admin">Admin Panel</router-link></p>
   </div>
 </template>
 
@@ -34,10 +34,6 @@ export default {
       });
   },
   methods: {
-    handleAdminClick: function(evt) {
-      evt.preventDefault();
-      this.$router.push('/admin');
-    },
   },
 };
 </script>
