@@ -45,4 +45,26 @@ router.post('/', async (req, res, next) => {
   }
 });
 
+router.delete('/', async (req, res, next) => {
+  const id = req.query.id;
+
+  let connection;
+
+  try {
+    connection = await db.getConnection();
+
+    // DELETE FROM `table_name` [WHERE condition];
+    // const queryInsert = 'INSERT INTO items (name, price, image_url) VALUES (?, ?, ?)';
+    const queryInsert = 'DELETE FROM items where id = ?';
+    const [result] = await connection.query(queryInsert, [id]);
+    res.json(result);
+  } catch (err) {
+    next(err);
+  } finally {
+    if (connection) {
+      connection.close();
+    }
+  }
+});
+
 module.exports = router;
